@@ -10,23 +10,23 @@
 
 #include "card.h"
 
+
+//3 element linked list management
+//in addition to member that tracks the length of the list
 class linkList
 {
 public:
 	linkList():head(nullptr),
-	           tail(nullptr),
 			   current(nullptr),
 			   previous(nullptr),
 			   m_length(0)
 			   {};
 	
 	card* head;
-	card* tail;
 	card* current;
 	card* previous;
 	
 	int m_length;
-	
 
 	
 };

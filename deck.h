@@ -28,22 +28,11 @@ private:
 	string cardValues[13];
 	
 	
-	
-
-public:
-	deck();
-	
-	~deck();
-	
 	void deal();
 	
 	void score();
-
-	void replace(card a_newCard);
 	
 	void shuffle();
-	
-	void playFlip();
 	
 	void newNode(string& a_suit, string& a_value, int a_valueIndex);
 	
@@ -56,12 +45,24 @@ public:
 	void listInsert(card *newCard); //inserts element at current index
 	void listRemove(); //removes element at current index
 	
-	void listFlip(int a_index1, int a_index2);//flip-flops two elements at given indecies
-	
+	void listFlip(int a_index1, int a_index2);//flip-flops two elements at given indices
 	void flip(card*& a_card1, card*& a_card2); //flips data held in two elements provided
 	
 	
+	void instructions();
 	void printCards(int numPrint, bool a_printNeighbors=false);
+	
+	
+	
+
+public:
+	deck();
+	
+	~deck();
+	
+	
+	
+	void playFlip();
 
 };
 

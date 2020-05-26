@@ -44,8 +44,8 @@ void deck::playFlip()
 	//printCards(52);
 	
 	
-	cout<<"Playing Flip \n";
-	
+	//cout<<"Playing Flip \n";
+	instructions();
 	while(userChoice!=2)
 	{
 		cout<<"Draw a Card (1) or Finish game (2): ";
@@ -81,9 +81,6 @@ void deck::score()
 	if(CARD_SUIT=="Hearts")
 		m_score+=1;
 }
-
-
-void deck::replace(card a_newCard){}
 
 
 
@@ -243,6 +240,18 @@ void deck::listRemove()
 
 
 
+
+void deck::instructions()
+{
+	cout<<"Welcome to Flip \n"<<
+		  "Instructions: \n"<<
+		  "(a) receives 10 points for an ace, \n"<<
+		  "(b) receives 5 points for a king, queen or jack, \n"<<
+		  "(c) receives 0 points for an 8, 9 or 10, (d) loses half their points for a 7, \n"
+		  "(e) loses all their points for a 2, 3, 4, 5 or 6, and \n" <<
+ 		  "(f) receives 1 point extra, in addition to the above, for a heart. \n"<<
+ 		  "Keep taking cards until you are satisfied with your points \n \n";
+}
 
 
 //Prints the next a_numPrint number of cards starting at any point in the deck

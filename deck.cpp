@@ -21,6 +21,7 @@ deck::deck():m_size(52),
 			 cardSuits{"Clubs", "Diamonds", "Hearts", "Spades"},
 			 cardValues{"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}
 {
+	//creation of deck of 52 cards, initially all of one suit in rank order
 	for(int itSuit=0;itSuit<4;itSuit++)
 	{
 		for(int itValue=0;itValue<13;itValue++)

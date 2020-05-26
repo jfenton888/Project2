@@ -33,7 +33,10 @@ deck::deck():m_size(52),
 }
 
 
-deck::~deck(){}
+deck::~deck()
+{
+	cout<<"\n \nFinal Score: "<<m_score<<endl<<endl;
+}
 
 
 void deck::playFlip()
@@ -42,22 +45,25 @@ void deck::playFlip()
 	shuffle();
 	toHead();
 	
-	//printCards(52);
-	
-	
-	//cout<<"Playing Flip \n";
 	instructions();
-	while(userChoice!=2)
+	
+	while(true)
 	{
-		cout<<"Draw a Card (1) or Finish game (2): ";
-		cin>>userChoice;
+		userChoice=isInt("Draw a Card (1) or Finish game (2): ",1,2);
 		
-		if(userChoice==1) deal();
+		if(userChoice==1)
+			deal();
+		else if(userChoice==2)
+			break;
 	}
-	cout<<"Final Score: "<<m_score<<endl;
+	
 }
 
-
+//Dealing a card is performed by:
+//scoring the card at the head
+//printing that card
+//printing the score after that card
+//removing the card from the list
 void deck::deal()
 {
 	score();
@@ -66,20 +72,20 @@ void deck::deal()
 	listRemove();
 }
 
-
+//Changes the users score based on the card that has been drawn
 void deck::score()
 {
-	if(CARD_VALUE_INDEX==14)
+	if(CARD_VALUE_INDEX==14)      //if Ace
 		m_score+=10;
-	else if(CARD_VALUE_INDEX>=11)
+	else if(CARD_VALUE_INDEX>=11) //if Jack, Queen, or King
 		m_score+=5;
-	else if(CARD_VALUE_INDEX>=8)
+	else if(CARD_VALUE_INDEX>=8)  //if 8, 9, 10
 		m_score+=0;
-	else if(CARD_VALUE_INDEX==7)
+	else if(CARD_VALUE_INDEX==7)  //if 7
 		m_score/=2;
-	else
+	else						  //if less than 7
 		m_score=0;
-	if(CARD_SUIT=="Hearts")
+	if(CARD_SUIT=="Hearts")       //if Heart
 		m_score+=1;
 }
 
@@ -278,4 +284,23 @@ void deck::printCards(int a_numPrint, bool a_printNeighbors)
 		nextNode();
 	}
 	toHead(); //returns to head at end of printing
+}
+
+
+
+int deck::isInt(std::string a_prompt, int a_min, int a_max)
+{
+	int input=NULL;
+	while((input<a_min) || (input>a_max))
+	{
+		cout << a_prompt;
+		cin >> input;
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore();
+		}
+		else break;
+	}
+	return input;
 }

@@ -60,7 +60,7 @@ private:
 																//will also show neighboring cards if
 																//second argument is specified as true
 	
-	
+	int isInt(std::string a_prompt, int a_min, int a_max);
 	
 
 public:

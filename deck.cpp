@@ -174,9 +174,12 @@ void deck::newNode(string& a_suit, string& a_value, int a_valueIndex)
 	
 	
 	
-	
 }
 
+
+//moves to the next element in the list
+//updates 'previous' accordingly
+//will not move too far, defined as when previous would become nullptr
 void deck::nextNode()
 {
 	if(m_deckList.current != nullptr)
@@ -186,21 +189,25 @@ void deck::nextNode()
 	}
 }
 
-//WORKS
+//Traverses list until at position pointed to by last known object
 void deck::toEnd()
 {
 	while(m_deckList.current!=nullptr)
 		nextNode();
 }
 
-//WORKS
+//Moves current position pointed to by m_deckList to the head
 void deck::toHead()
 {
 	m_deckList.previous= nullptr;
 	m_deckList.current=m_deckList.head;
 }
 
-//WORKS
+
+//Inserts element at the kth position in the linked list
+//element that was previously in that position is moved to the k+1
+//to add an element to the end, 'current' must be the one pointed to by the last card
+//previously defined
 void deck::listInsert(card *newCard)
 {
 	newCard->nextCard=m_deckList.current;
@@ -214,6 +221,9 @@ void deck::listInsert(card *newCard)
 }
 
 
+
+//deletes element at the 'current' position and links its surrounding elements
+//to maintain continuity
 void deck::listRemove()
 {
 	
@@ -235,7 +245,8 @@ void deck::listRemove()
 
 
 
-
+//Prints the next a_numPrint number of cards starting at any point in the deck
+//Additional optional argument that allows for previous and next cards to be printed in groupings
 void deck::printCards(int a_numPrint, bool a_printNeighbors)
 {
 	for(int it=0;it<a_numPrint;it++)
@@ -251,11 +262,10 @@ void deck::printCards(int a_numPrint, bool a_printNeighbors)
 		if(m_deckList.current->nextCard!= nullptr && a_printNeighbors){
 			cout<<"Next: ";
 			cout<<*(m_deckList.current->nextCard);
+			cout<<endl;
 		}
-		
-		//cout<<endl;
 		
 		nextNode();
 	}
-	toHead();
+	toHead(); //returns to head at end of printing
 }
